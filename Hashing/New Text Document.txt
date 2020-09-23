@@ -1,0 +1,78 @@
+-Hashing is improvement over "direct access tables".The idea is to convert previous big numbered index into smaller no. and used it as index in 'Hash Table'.
+
+*-Hash Function-
+It is a function which is used to convert big no. and strings into small no. so that they can be used as a index.
+
+--characteristics of hash function-
+-efficiently computable.
+-should uniformly distribute the keys.
+
+*-Hash Table- 
+-It is a array which stores pointer of data which stores for particular index of array.
+- An entry in hash table is NIL if no existing phone number has hash function value equal to the index for the entry.
+
+*-Collision handling-
+-since two keys may/index have same value as hash function is converting large quantities into smaller no. there is a condition of collision and it can be handled by collision Handling.
+-simple but requires additional memory.
+
+-Two ways of collision handling-
+1.chaining-idea is to make each cell of hash table points to linked list of records that have same hash function value.
+2.Open Addressing- In it all records are stored in Hash table.
+
+1.Chaining-
+-Ideais to convert each cell of table having collision problems into linked list where colliding elements are stored in a linked list.
+
+Advantages:
+1) Simple to implement.
+2) Hash table never fills up, we can always add more elements to the chain.
+3) Less sensitive to the hash function or load factors.
+4) It is mostly used when it is unknown how many and how frequently keys may be inserted or deleted.
+
+Disadvantages: 
+1) Cache performance of chaining is not good as keys are stored using a linked list. Open addressing provides better cache performance as everything is stored in the same table.
+2) Wastage of Space (Some Parts of hash table are never used)
+3) If the chain becomes long, then search time can become O(n) in the worst case.
+4) Uses extra space for links.
+
+
+2.Open Addressing-
+it is done by following methods-
+2.1.Linear Probing-In it we linearly probe for next slot.
+If slot hash(x) % S is full, then we try (hash(x) + 1) % S
+If (hash(x) + 1) % S is also full, then we try (hash(x) + 2) % S
+If (hash(x) + 2) % S is also full, then we try (hash(x) + 3) % S 
+..................................................
+
+clustering- it is a problem arising due to linear probing.Many consecutive elements forms groups and it starts taking time to find free slots.
+
+2.2Quadratic Probing-We look for i^2th slot for ith iteration.
+let hash(x) be the slot index computed using hash function.  
+If slot hash(x) % S is full, then we try (hash(x) + 1*1) % S
+If (hash(x) + 1*1) % S is also full, then we try (hash(x) + 2*2) % S
+If (hash(x) + 2*2) % S is also full, then we try (hash(x) + 3*3) % S
+..................................................
+
+2.3 Double Hashing-we use another hash function hash2(x) and look for i*hash2(x) in ith iteration.
+let hash(x) be the slot index computed using hash function.  
+If slot hash(x) % S is full, then we try (hash(x) + 1*hash2(x)) % S
+If (hash(x) + 1*hash2(x)) % S is also full, then we try (hash(x) + 2*hash2(x)) % S
+If (hash(x) + 2*hash2(x)) % S is also full, then we try (hash(x) + 3*hash2(x)) % S
+..................................................
+
+comparison -
+2.1.Linear probing has effective cache handling ,easy to apply but it has clustering problem.
+
+2.2Quadratic Probing-It has mid-level cache management and efficiency as compared to two mthods.
+
+2.3Double Hashing-It has low cache management bit high efficiency.No clustering.
+  
+ chaining                            open addressing
+-it is simpler to implement.        -requires more computation.
+-here table cannot become full.     -table may become full.
+-sensitive to load factor and       -needs extra care for avoiding clustering.
+hashing function.     
+-mostly used when no. of keys are   -are used when keys are known.
+ not known.                  
+-Cache performance is low.           -cache performance is good.
+-wastage of space.                  -It does't waste space.
+-uses extra memory of linked list.  -Does't require extra memory.

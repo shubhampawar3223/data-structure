@@ -1,0 +1,16 @@
+Linked List-
+-These elements are not stored in continious manner.
+-elements are linked using pointers.
+
+Advantages-
+-dynamic size.
+-Ease of Insertion and deletion.
+-In array memory is assigned in compile time whereas in LL it is assigned at execution time.
+-Accessing an element is fast in array ,wheras it is slow in Linked list.
+-Memory utilization of LL is efficient as compared to array.
+
+
+Disadvantages-
+-arrays have better cache locality .
+-More memory is required for pointer.
+-Random access is not allowed.

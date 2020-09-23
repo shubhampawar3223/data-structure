@@ -1,0 +1,3 @@
+Linear Search has time complexity-O(n).
+
+For binary search input to the function should be sorted array.
